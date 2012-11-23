@@ -21,9 +21,13 @@ namespace YoutubeQuery
 
         private static void ExcecuteProgram()
         {
+            int eventNum=0;
             List<MusicEvent> musicEvents = GetEventsList();
             foreach (var musicEvent in musicEvents)
             {
+                ++eventNum;
+                Console.WriteLine();
+                Console.Write("Processing event " + eventNum.ToString() + " out of " + musicEvents.Count());
                 try
                 {
                     int eventID = musicEvent.id;
@@ -31,16 +35,28 @@ namespace YoutubeQuery
 
                     foreach (var currentTrack in currentTracks)
                     {
-                        if (true)//string.IsNullOrEmpty(currentTrack.sourceid) || string.IsNullOrEmpty(currentTrack.name))
+                        if (string.IsNullOrEmpty(currentTrack.sourceid) || string.IsNullOrEmpty(currentTrack.name))
                         {
-                            var udpatedTrack = GetUpdatedInfo(currentTrack);
-                            UpdateTrack(eventID, udpatedTrack);
+                            var updatedTrack = GetUpdatedInfo(currentTrack);
+                            UpdateTrack(eventID, updatedTrack);
+                            if (updatedTrack.sourceid == string.Empty)
+                            {
+                                Console.WriteLine(" ; could not find a source for the track");
+                            }
+                            else
+                            {
+                                Console.WriteLine(" ; added sourceId: " + updatedTrack.sourceid);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine(" ; sourceId already populated");
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    //Console.WriteLine(e.Message);
                 }
             }
         }
@@ -70,7 +86,7 @@ namespace YoutubeQuery
             using (var responseReader = new StreamReader(response.GetResponseStream()))
             {
                 var responseContent = responseReader.ReadToEnd();
-                Console.WriteLine(responseContent);
+                //Console.WriteLine(responseContent);
             }
         }
 
@@ -98,12 +114,26 @@ namespace YoutubeQuery
         /// <returns>Returns a list of MusicEvents</returns>
         private static List<MusicEvent> GetEventsList()
         {
-            WebRequest getEvents = WebRequest.Create("http://tonightsplaylist.herokuapp.com/events.json");
-            WebResponse getEventsResponse = getEvents.GetResponse();
-            Stream eventsStream = getEventsResponse.GetResponseStream();
-            StreamReader eventsSR = new StreamReader(eventsStream);
-            string eventsRaw = eventsSR.ReadToEnd();
-            List<MusicEvent> musicEvents = JsonConvert.DeserializeObject<List<MusicEvent>>(eventsRaw);
+            List<MusicEvent> musicEvents = new List<MusicEvent>();
+            int pagenum = 1;
+            while(true)//for (int pagenum = 1; pagenum <= 1; pagenum++)
+            {
+                WebRequest getEvents = WebRequest.Create("http://tonightsplaylist.herokuapp.com/events.json?page=" + pagenum.ToString());
+                WebResponse getEventsResponse = getEvents.GetResponse();
+                Stream eventsStream = getEventsResponse.GetResponseStream();
+                StreamReader eventsSR = new StreamReader(eventsStream);
+                string eventsRaw = eventsSR.ReadToEnd();
+                List<MusicEvent> musicEventsToAdd = JsonConvert.DeserializeObject<List<MusicEvent>>(eventsRaw);
+                if (musicEventsToAdd.Count() > 0)
+                {
+                    musicEvents = musicEvents.Concat(musicEventsToAdd).ToList();
+                    pagenum++;
+                }
+                else
+                {
+                    break;
+                }
+            }
             return musicEvents;
         }
 
@@ -128,6 +158,10 @@ namespace YoutubeQuery
                 track.source = "Youtube";
                 track.sourceid = videoId;
                 track.name = title;
+            }
+            else
+            {
+                //Console.WriteLine("No videos found for artist: " + track.artist);
             }
 
             return track;

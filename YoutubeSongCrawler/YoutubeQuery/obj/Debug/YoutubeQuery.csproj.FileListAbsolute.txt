@@ -22,3 +22,15 @@ C:\Users\gregue\Documents\GitHub\YoutubeQuery\YoutubeLinksUploader\YoutubeQuery\
 C:\Users\gregue\Documents\GitHub\YoutubeQuery\YoutubeLinksUploader\YoutubeQuery\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\gregue\Documents\GitHub\YoutubeQuery\YoutubeLinksUploader\YoutubeQuery\bin\Debug\Newtonsoft.Json.xml
 C:\Users\gregue\Documents\GitHub\YoutubeQuery\YoutubeLinksUploader\YoutubeQuery\obj\Debug\YoutubeQuery.csprojResolveAssemblyReference.cache
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\YoutubeQuery.exe.config
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\obj\Debug\YoutubeQuery.exe
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\obj\Debug\YoutubeQuery.pdb
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\YoutubeQuery.exe
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\YoutubeQuery.pdb
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\HtmlAgilityPack.dll
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\HtmlAgilityPack.xml
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gregue\Documents\GitHub\tonights-playlist-app\YoutubeSongCrawler\YoutubeQuery\obj\Debug\YoutubeQuery.csprojResolveAssemblyReference.cache
